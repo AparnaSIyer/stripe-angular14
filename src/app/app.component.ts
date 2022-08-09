@@ -104,14 +104,18 @@ export class AppComponent implements OnInit{
       
       const { error } = await stripe.redirectToCheckout({
         mode: 'payment',
-        lineItems: [{ price: 'price_1LUgYeSE9qohiq2jpZkJOikr', quantity: 2 }],
+        lineItems: [{ price: 'price_1LUrEmSE9qohiq2jij0r7dqi', quantity: 1 }],
         billingAddressCollection:'auto',
-        successUrl: `http://localhost:43217/success`,
-        cancelUrl: `http://localhost:43217/failure`,
+        successUrl: `http://localhost:44707/success`,
+        cancelUrl: `http://localhost:44707/failure`,
       });
   
       if (error) {
+        sessionStorage.setItem('err','true')
         console.log(error);
+      } else{
+        sessionStorage.setItem('err','false')
+
       }
     }
    
